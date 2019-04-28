@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="luffy-container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>班级</th>
+                    <th>老师</th>
+                    <th>开班日期</th>
+                    <th>作业成绩</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for class_obj in classes %}
+                    <tr>
+                    <td>{{ class_obj }}</td>
+                    <td>{% for teacher_obj in class_obj.teacher.all %}
+                        {{ teacher_obj.name }},
+                    {% endfor %}
+                    </td>
+                    <td>{{ class_obj.start_date|date:'Y-m-d' }}</td>
+{#                    <td><a href="/academy/student/myclasses/homeworkscore/{{ student_id }}/{{ class_obj.id }}/">作业成绩</a></td>#}
+                    <td><a href="{% url 'stark:academy_student_homeworkscore' student_id=student_id classes_id=class_obj.id %}">作业成绩</a></td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

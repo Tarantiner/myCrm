@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="luffy-container">
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>跟进人</th>
+                <th>跟进内容</th>
+                <th>跟进日期</th>
+            </tr>
+        </thead>
+    <tbody>
+    {% for row in record_list %}
+    <tr>
+        <td>{{ row.consultant }}</td>
+        <td>{{ row.note }}</td>
+        <td>{{ row.date }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+{% endblock %}

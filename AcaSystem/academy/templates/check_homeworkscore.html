@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="luffy-container">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>作业</th>
+                <th>发布日期</th>
+                <th>成绩</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for homeworkscore in score_queryset %}
+                <tr>
+                <td>{{ homeworkscore.homework }}</td>
+                <td>{{ homeworkscore.homework.publish_date|date:'Y-m-d' }}</td>
+                <td>{{ homeworkscore.score }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
